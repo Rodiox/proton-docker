@@ -38,4 +38,4 @@ docker ps -a
 ```
 
 # Credits
-Thanks to Jesse for the initial instructions!
+Thanks to @poplexity for the initial instructions!
