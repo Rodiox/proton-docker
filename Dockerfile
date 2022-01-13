@@ -7,6 +7,7 @@ RUN set -xe && echo '#!/bin/sh' > /usr/sbin/policy-rc.d && echo 'exit 101' >> /u
 RUN mkdir -p /run/systemd && echo 'docker' > /run/systemd/container
 
 RUN yes | unminimize && apt-get update && apt-get install -yq asciidoctor bash-completion build-essential clang-tools-8 curl g++-8 git htop jq less libcurl4-gnutls-dev libgmp3-dev libssl-dev libusb-1.0-0-dev llvm-4.0 locales man-db multitail nano nginx ninja-build pkg-config python software-properties-common sudo supervisor vim wget xz-utils zlib1g-dev && update-alternatives --remove-all cc && update-alternatives --install /usr/bin/cc cc /usr/bin/gcc-8 100 && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 100 && update-alternatives --remove-all c++ && update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-8 100 && update-alternatives --install /usr/bin/gcc++ gcc++ /usr/bin/g++-8 100 && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-8 100 && locale-gen en_US.UTF-8 && curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -yq nodejs && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* && npm i -g yarn typescript
+RUN curl -LO https://cmake.org/files/v3.13/cmake-3.13.2.tar.gz && tar -xzf cmake-3.13.2.tar.gz && cd cmake-3.13.2 && ./bootstrap --prefix=/usr/local && make -j$(nproc) && make install && cd /root && rm -rf cmake-3.13.2.tar.gz cmake-3.13.2
 
 RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 
