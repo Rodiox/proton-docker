@@ -11,8 +11,8 @@ RUN curl -LO https://cmake.org/files/v3.13/cmake-3.13.2.tar.gz && tar -xzf cmake
 
 RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers && export HOME=/user/gitpod
 
-RUN wget https://github.com/eosio/eos/releases/download/v2.0.7/eosio_2.0.7-1-ubuntu-18.04_amd64.deb
-RUN apt-get install -y ./eosio_2.0.7-1-ubuntu-18.04_amd64.deb
+RUN wget https://github.com/ProtonProtocol/proton/releases/download/v2.0.5/proton_2.0.5-1-ubuntu-18.04_amd64.deb
+RUN apt-get install -y ./proton_2.0.5-1-ubuntu-18.04_amd64.deb
 
 RUN wget https://github.com/eosio/eosio.cdt/releases/download/v1.7.0/eosio.cdt_1.7.0-1-ubuntu-18.04_amd64.deb
 RUN apt-get install -y ./eosio.cdt_1.7.0-1-ubuntu-18.04_amd64.deb
