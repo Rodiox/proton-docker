@@ -29,7 +29,7 @@ RUN { echo && echo "PS1='\[\e]0;\u \w\a\]\[\033[01;32m\]\u\[\033[00m\] \[\033[01
 RUN sudo echo "Running 'sudo' for Gitpod: success"
 RUN cleos wallet create --to-console | tail -n 1 | sed 's/"//g' >/password && cleos wallet import --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
 RUN rm -f /home/gitpod/.wget-hsts
-RUN cd /home/gitpod/ && find . -not "(" -user gitpod -and -group gitpod ")" && {exit 1;}
+RUN cd /home/gitpod/ && find . -not "(" -user gitpod -and -group gitpod ")" && ls -lsa && {exit 1;}
 RUN cd /home/gitpod/ && notOwnedFile=$(find . -not "(" -user gitpod -and -group gitpod ")" -print -quit)     && { [ -z "$notOwnedFile" ]         || { echo "Error: not all files/dirs in $HOME are owned by 'gitpod' user & group"; echo $notOwnedFile; exit 1; } }
 
 CMD tail -f /dev/null
