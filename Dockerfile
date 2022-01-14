@@ -28,7 +28,6 @@ RUN echo >/password && chown gitpod /password && chgrp gitpod /password && >/run
 RUN { echo && echo "PS1='\[\e]0;\u \w\a\]\[\033[01;32m\]\u\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \\\$ '" ; } >> .bashrc
 RUN sudo echo "Running 'sudo' for Gitpod: success"
 RUN cleos wallet create --to-console | tail -n 1 | sed 's/"//g' >/password && cleos wallet import --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
-RUN echo '\n unlock-timeout = 31536000 \n' >/home/gitpod/eosio-wallet/config.ini
 RUN rm -f /home/gitpod/.wget-hsts
 RUN notOwnedFile=$(find . -not "(" -user gitpod -and -group gitpod ")" -print -quit)     && { [ -z "$notOwnedFile" ]         || { echo "Error: not all files/dirs in $HOME are owned by 'gitpod' user & group"; exit 1; } }
 
