@@ -18,7 +18,7 @@ RUN wget https://github.com/eosio/eosio.cdt/releases/download/v1.7.0/eosio.cdt_1
 RUN apt-get install -y ./eosio.cdt_1.7.0-1-ubuntu-18.04_amd64.deb
 RUN apt-get install -y vim build-essential libssl-dev
 
-RUN git clone https://github.com/ProtonProtocol/proton.contracts.git /home/gitpod/proton.contracts && cd /home/gitpod/proton.contracts && git checkout v1.9.1-7 && git submodule update --init --recursive && rm -r build && mkdir build && cd /home/gitpod/proton.contracts/build && cmake -GNinja .. && ninja && mkdir /home/gitpod/contracts && cp `find . -name '*.wasm'` /home/gitpod/contracts && cd /home/gitpod && chown gitpod /home/gitpod/contracts && rm -rf /home/gitpod/proton.contracts
+RUN git clone https://github.com/ProtonProtocol/proton.contracts.git /home/gitpod/proton.contracts && cd /home/gitpod/proton.contracts && git checkout v1.9.1-7 && git submodule update --init --recursive && rm -r build && mkdir build && cd /home/gitpod/proton.contracts/build && cmake -GNinja .. && ninja && mkdir /home/gitpod/contracts && cp `find . -name '*.wasm'` /home/gitpod/contracts && cd /home/gitpod && sudo chown gitpod /home/gitpod/contracts && rm -rf /home/gitpod/proton.contracts
 
 RUN echo 'alias cleosp="cleos -u https://proton.cryptolions.io"' >> ~/.bashrc
 RUN echo 'alias cleospt="cleos -u https://testnet.protonchain.com"' >> ~/.bashrc
